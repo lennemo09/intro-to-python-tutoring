@@ -1,4 +1,18 @@
 ﻿# Python Intro - Week 1 Homework
+## Revision
+Variable is a 'name' assigned to a certain value used to refer to that value. The value assigned to a variable name can be changed at any time.
+
+A variable name must be a single "word", as in there is no space inbetween the characters and it can only contain letters, numbers and underscore '_'.
+
+For example, if you would like to name a variable "student name" it must be written as: `student_name`, `studentName` or `studentname`. 
+To assign a variable to a value, use the following syntax: `variableName = "some arbitrary value"`
+You can read this as: variableName **is** some arbitrary value.
+
+Some examples of variables being assigned to a value:
+- `this_number = 1` : This number IS 1.
+- `newest_student_name = "Alice"` : Newest student's name is Alice.
+- `shopping_list = ["orange","apple","banana"]`:  Shopping list is orange, apple and banana
+## Homework
 ### Excercise 1
 Write a program to add two numbers and print them to the screen.
 ##### Example:
@@ -47,7 +61,7 @@ Enter amount in USD: 12.5
 Amount converted to VND: 287891.88
 ```
 
-#### Extended content:
+## Extended content:
 ##### Importing libraries:
 Recall that Python has built-in functions such as `print()`, `int()`, `float()` and many more.
 In Python, you can import external `libraries` to use their existing functionalities that is not provided with Python by default. For example, if we want to find the sine and cosine of an angle, we have to use the `math` library.
@@ -68,7 +82,7 @@ print("Cosine of 90 =", cosine_value)
  So a $90\degree$ angle is equal to $\frac{\pi}{2}$ radians and a $180\degree$ angle is equal to $\pi$ radians.
  Read more about radians angles here: https://www.mathwarehouse.com/trigonometry/radians/convert-degee-to-radians.php
 
-#### Excercise 4
+### Excercise 4
 Write a program that takes from user input an angle in degrees, print out the radians value and the cosine and sine value of that angle. For $\pi$ you can use `pi = 3.14159265` or `math.pi`.
 ##### Example
 ```
@@ -80,8 +94,8 @@ Write a program that takes from user input an angle in degrees, print out the ra
 ```
 >>> Enter angle in degrees: 90
 >>> Degrees converted to radians: 1.5707963267948966
->>> Cosine of 180 degrees: 6.123233995736766e-17
->>> Sine of 180 degrees: 1.0
+>>> Cosine of 90 degrees: 6.123233995736766e-17
+>>> Sine of 90 degrees: 1.0
 ```
 ```
 >>> Enter angle in degrees: 180

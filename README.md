@@ -1,2 +1,3 @@
-# intro-to-python-tutoring
-A collection of teaching material I use for my Python tutoring classes.
+# Intro to Python Tutoring
+
+Please find Homework questions under Homework directory.

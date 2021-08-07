@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Week 3 - Content</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="python-intro---week-3-content">Python Intro - Week 3 Content</h1>
+<h2 id="decomposition-algorithmic-problem-solving-and-functions-in-python">Decomposition, algorithmic problem solving, and functions in Python</h2>
+<h3 id="decomposition">1. Decomposition</h3>
+<h5 id="what-is-decomposition">What is ‘decomposition’?</h5>
+<blockquote>
+<p>Decomposition is one of the four cornerstones of Computer Science. It <strong>involves breaking down a complex problem or system into smaller parts that are more manageable and easier to understand</strong>. The smaller parts can then be examined and solved, or designed individually, as they are simpler to work with.</p>
+</blockquote>
+<p><a href="https://www.bbc.co.uk/bitesize/guides/zqqfyrd/revision/1"><em>(Source)</em></a></p>
+<p>In essence, decomposition involves breaking the problem down into steps. Each step can then be treated as an individual problem.</p>
+<h5 id="why-does-this-matter">Why does this matter?</h5>
+<p>Decomposition is important for:</p>
+<ul>
+<li>Simplifying the problem</li>
+<li>Allowing different <em>agents</em> (people or machines) to work on different part of the problem.</li>
+</ul>
+<h5 id="very-important-for-programming-the-3rs-rule">Very important for programming! The 3R’s rule:</h5>
+<ul>
+<li><strong>Reduce</strong>: replace sections of the algorithm with functions.</li>
+<li><strong>Reuse</strong>: re-use the same functions for common tasks. For example, so far we have been using <code>print()</code> and other functions a lot in Python to do our work. These involves multiple steps to implement from scratch! Thus using the same functions save us a lot of time (and sanity)! <a href="https://iq.opengenus.org/how-printf-and-scanf-function-works-in-c-internally/">Click here to find out what it is like to write our own <code>print</code> function.</a></li>
+<li><strong>Recycle</strong>: easily extend and improve on existing functions.</li>
+</ul>
+<p>Wait, but what is an <em>algorithm</em> or a <em>function</em>?</p>
+<h3 id="introduction-to-algorithms">2. Introduction to algorithms</h3>
+<h5 id="what-is-an-algorithm">What is an algorithm?</h5>
+<p>In short, an <em>algorithm</em> is a sequence of steps to solve problems.<br>
+A more easier way to think of an <em>algorithm</em> is to consider it to be like a <em>recipe</em>!<br>
+For example, the following is a <em>recipe/algorithm</em> to make a chocolate cake:</p>
+<blockquote>
+<p>Melt chocolate and 2 tablespoons water in double boiler.<br>
+When melted, stir in powdered sugar; add butter bit by bit.<br>
+Set aside. Beat egg yolks until thick and lemon-colored, about 5 minutes.<br>
+Gently fold in chocolate.<br>
+Reheat slightly to melt chocolate, if necessary.<br>
+Stir in rum and vanilla. Beat egg whites until foamy.<br>
+Beat in 2 tablespoons sugar; beat until stiff peaks form.<br>
+Gently fold whites into chocolate-yolk mixture.<br>
+Pour into individual serving dishes.<br>
+Chill at least 4 hours.<br>
+Serve with whipped cream, if desired.<br>
+Makes 6 to 8 servings.</p>
+</blockquote>
+<p>Another example of an <em>algorithm</em> is:</p>
+<blockquote>
+<p>Have a piece of A4 paper.<br>
+Fold paper in half.<br>
+Unfold and then fold the corners into the center line.<br>
+Fold the top edges to the center.<br>
+Fold the paper in half.<br>
+Fold the sides down to meet the bottom edge of the paper.</p>
+</blockquote>
+<p><em>Question: What is the above algorithm aiming to do?</em></p>
+<h5 id="what-exactly-makes-an-algorithm">What exactly makes an algorithm?</h5>
+<p>In order to differentiate an algorithm from an <a href="https://www.dictionary.com/browse/arbitrary"><em>arbitrary</em></a> set of instructions, we need to have a definition for a proper algorithm:</p>
+<p><em>An algorithm is a finite sequence of steps written for an agent (e.g. person, computer) to solve a problem with the following properties:</em></p>
+<blockquote>
+<ul>
+<li><em>Definiteness</em>: Each step must be <strong><em>precisely</em></strong> and <a href="http://tratu.soha.vn/dict/en_vn/Unambiguous"><strong><em>unambiguously</em></strong></a> specified for an agent.</li>
+<li><em>Input</em>: An algorithm can have <strong><em>zero or more</em></strong> inputs.</li>
+<li><em>Output</em>: An algorithm must have <strong><em>one or more</em></strong> outputs.</li>
+<li><em>Effectiveness</em>: Each step must be simple enough that they can be done exactly in a (reasonably) <strong><em>finite</em></strong> amount of time by the agent.</li>
+<li><em>Finiteness</em>: The algorithm must always terminate after a <strong><em>finite</em></strong> number of steps (e.g. not in an infinite loop).</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: If all the above are satisfied except for <em>Finiteness</em>, it is called a <em>process</em>.</p>
+</blockquote>
+<h5 id="definiteness-vs.-effectiveness">Definiteness vs. Effectiveness</h5>
+<p>The 2 properties might be confusing at first but to better understand the difference, you can intepret them as:</p>
+<blockquote>
+<p><em>The agent following the instruction must:</em></p>
+<ul>
+<li><em>Definiteness</em>: Understand <strong>WHAT</strong> to do.</li>
+<li><em>Effectiveness</em>: be <strong>ABLE</strong> to do it.</li>
+</ul>
+</blockquote>
+<h5 id="lets-make-an-algorithm">Let’s make an algorithm!</h5>
+<p>First, I will show you how to write an algorithm to open a door. It is important to understand that there is no <em>right</em> algorithm for a problem, you can totally create another algorithm to open a door that is very different from mine and it would still be a valid algorithm (given that it meets all the properties defined above).</p>
+<p>Here is my algorithm on how to open a door:</p>
+<pre><code>Assumption: For doors with no handle or a handle designed to be rotated clockwise. Requires agent to have at least one hand.
+
+Algorithm: 
+- Input: none
+- Output: statement as to the success of attempt
+
+1. Place left hand upon door agent may replace this with right hand at their discretion).
+2. If the door has a handle:
+	a. Grasp the handle with alternate hand (or same hand if only have one).
+	b. If handle can be rotated clockwise about connection with door:
+		i. Rotate handle clockwise until it stops.
+		ii. Push door.
+		iii. If door begins to open:
+			- Continue pushing door until open enough to step through.
+			- Release handle.
+			- Output: "Door is open" -&gt; Go to step 3.
+		iv. Otherwise:
+			- Pull door
+			- If door begins to open:
+				+ Continue pulling until open enough to step through
+				+ Release handle
+				+ Output: "Door is open" -&gt; Go to step 3.
+			- Otherwise:
+				+ Output: "Door cannot be opened" -&gt; Go to step 3.
+	c. Otherwise:
+		i. Output: "Door cannot be opened" -&gt; Go to step 3.
+3. End.
+</code></pre>
+<p>Remember, you can write an entirely different algorithm from what I have done above but as long as it satisfies all the properties of an <em>algorithm</em>, it is to be considered a valid one. Another thing to notice is that the level of details I have included above is <em>arbitrary</em> chosen, at first you might thing the steps are too specific! But then you might wonder why I wasn’t being even <strong>more</strong> specific, like telling how to control your arm muscle to push the door?</p>
+<p>This is because <em>Definiteness</em> depends on the agent, we need to be clear enough that anyone who read our algorithm can understand exactly what to do and here I assume the person doesn’t know how to open a door so they might not know that you would need to push it. But because I assume it <strong>is</strong> a person, they must have already known what <strong>push</strong> means.</p>
+<p>If this was a robot however, you would need to specify how the robot uses its mechanical arm to do a <strong>pushing</strong> motion! Thus requiring your algorithm to be much more detailed.</p>
+<p>Computer scientists and software engineers solves real-world problems with computers all the time, and because <em>computers</em> have not yet evolved enough to understand the real world as much as we are, they need to be comfortable with reading, writing and understanding algorithms extremely well.<br>
+<strong>Exercise (required)</strong>: Write an algorithm on how to make an omelette (or rice or any type of food). Write this in a text file or on paper, not in Python.<br>
+<strong>Extra reading (for fun - not required): <a href="http://idioknowledge.blogspot.com/2015/03/difference-between-computer-science.html">Do you know the difference between a computer scientist and a software engineer?</a></strong></p>
+<h3 id="functions-in-python">3. Functions in Python</h3>
+<h5 id="what-is-a-function">What is a function?</h5>
+<p>Conceptually, a function is very similar to an algorithm but not exactly:<br>
+Recall that algorithms have:</p>
+<ul>
+<li>Names</li>
+<li>Input: Zero or more</li>
+<li>Output: One or more</li>
+</ul>
+<p>Whereas, a function:</p>
+<ul>
+<li>May not have names, but usually do</li>
+<li>May or may not have input <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.48312em; vertical-align: 0em;"></span><span class="mrel">≈</span></span></span></span></span> Zero or more.</li>
+<li>Functions may either:
+<ul>
+<li>Print a value (or values)</li>
+<li>Change an input value (or values)</li>
+<li>Return a value (or values)</li>
+</ul>
+</li>
+</ul>
+<p>Knowing this, you’ll be thinking that we should make a function corresponding to each algorithm we have. This can work for now, but it’s usually not the case for more complicated algorithm (remember the section <strong>Decomposition</strong>).</p>
+<h5 id="simple-printing-functions-in-python">Simple printing functions in Python</h5>
+<p>Here’s the syntax for making a function in Python:</p>
+<pre><code>def this_is_my_function(my_name):
+	print("Hello " + my_name)
+	print("Welcome to My Function!")
+</code></pre>
+<p>Here, we use the <code>def</code> keyword to denote that we are creating a function! Following the <code>def</code> keyword (with a space!) is our function name, we can name this anything, I just call it <code>this_is_my_function</code> for simplicity. Right after the function name (without a space), you can see we have <code>()</code> - this is familiar! We’ve already seen this while using other built-in functions like <code>print()</code> and <code>int()</code> or <code>str()</code> or <code>len()</code>. Remember when we use those functions like <code>print()</code> we usually <strong>pass</strong> something inside <code>()</code> for the function to do its job with, right? Here with our function we can do the same as well. The <em>thing(s)</em> that we are passing inside <code>()</code>  is called a <strong>parameter</strong> or <strong>argument</strong> to a function. In this case, our function <code>this_is_my_function()</code> have a <strong>parameter</strong> called <code>my_name</code>.</p>
+<p>So, how do we use our newly created function? Simple, just like <code>print()</code> or other functions we have used so far, simple call the function with the function’s name and pass in the required parameters:</p>
+<pre><code>name_from_user = input("What is your name? ")
+this_is_my_function(name_from_user)
+
+&gt;&gt;&gt; What is your name? ABCD
+&gt;&gt;&gt; Hello ABCD
+&gt;&gt;&gt; Welcome to My Function!
+</code></pre>
+<p><strong>Note</strong> that like <code>print()</code>, we can pass our string’s <em>value</em> <strong>directly</strong> as the parameter. In the above example I pass the string <strong>indirectly</strong> through a variable. The same function would still work if I called it with <code>this_is_my_function("ABCD")</code> instead.<br>
+<strong>Another note</strong> that our function only exist within the Python file it was created in, unlike <code>print()</code> and other built-in functions, because our <code>this_is_my_function</code> function is not built-in. In later weeks we will find out how to use this function in other Python files!</p>
+<p><strong>Exercise (required)</strong>: Write an function to print out your name and age. Something like:</p>
+<pre><code>def print_name_and_age(name,age):
+	YOUR CODE HERE
+	
+print_name_and_age("Nikola Tesla","5555")
+
+&gt;&gt;&gt; "Hello! My name is Nikola Tesla and I'm 5555 years old."
+</code></pre>
+<p><strong>Exercise (required)</strong>: Write an function to print out the area of a circle given a radius as the parameter (you can use <code>math.pi</code> or your own value of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">π</span></span></span></span></span>):</p>
+<pre><code>def print_circle_area(radius):
+	YOUR CODE HERE
+
+print_circle_area(10)
+r = 20
+print_circle_area(r)
+
+&gt;&gt;&gt; 314.15926535
+&gt;&gt;&gt; 1256.63706143
+</code></pre>
+<h5 id="more-useful-functions-in-python">More useful functions in Python</h5>
+<p>Recall from the <strong>What is a function?</strong> section, we mentioned that other than just printing out values, a function can also:</p>
+<ul>
+<li>Return a value (or values)</li>
+</ul>
+<p>Here is an example of a function that does not print a value but returns it:</p>
+<pre><code>def sum_first_two_item_of_list(my_list):
+	first_item = my_list[0]
+	second_item = my_list[1]
+	return first_item + second_item
+
+new_list = [6,2,1.25,2.5]
+sum1 = sum_first_two_item_of_list(new_list)
+print(sum1)
+
+another_list = [2.1,3,16,22]
+print(sum_first_two_item_of_list(another_list))
+
+&gt;&gt;&gt; 8
+&gt;&gt;&gt; 5.1
+</code></pre>
+<p>We can see that as the function returns a value using the <code>return</code> keyword at the end of the function, the call of the function is evaluated to be exactly the value that it would return! Hence we can use it to assign to a new variable like <code>sum1</code> or use it directly inside a <code>print()</code>! Very convenient.</p>
+<p><strong>Exercise (required)</strong>: Remember our leap year problem? Here’s a program that prints the number of days a month have (knowing leap year is important because it determines the output of the input is “February”):</p>
+<pre><code>month = input("Enter month: ")
+month = month[:3].lower() # What is this doing?
+
+if month == "feb":
+	year = int(input("Enter year: "))
+	# Check if it is a leap year:
+	if year%4==0 and (year%100!=0 or year%400==0):
+		print("29 days")
+	else:
+		print("28 days")
+elif month=="sep" or month=="apr" or month=="jun" or month=="nov":
+	print("30 days")
+else:
+	print("31 days")
+</code></pre>
+<p>Notice that our function is now a bit harder to read and understand. Remember <strong>Decomposition</strong>? We should <em>decompose</em> this problem into 2 different problems:</p>
+<ul>
+<li>Check if it’s a leap year</li>
+<li>Return number of days in the month</li>
+</ul>
+<p>Which can be turned into 2 different functions! Your first task is to write the leap year function so that our program will become:</p>
+<pre><code>def is_leap_year(year):
+	YOUR CODE HERE
+	# return True if leap year
+	# return False if not a leap year
+
+month = input("Enter month: ")
+month = month[:3].lower() # What is this doing?
+
+if month == "feb":
+	year = int(input("Enter year: "))
+	# Remember as is_leap_year returns True or False,
+	# We can use it directly with if-else statement:
+	if is_leap_year(year):
+		print("29 days")
+	else:
+		print("28 days")
+elif month=="sep" or month=="apr" or month=="jun" or month=="nov":
+	print("30 days")
+else:
+	print("31 days")
+</code></pre>
+<p>Now our program is a bit easier to read. <strong>Readability</strong> is a very important in programming! But we can still <em>decompose</em> it better and make it even easier to understand. Recall that this program is essentially an algorithm! As such, we can present it with a function and gives it a name so people knows what is going on. Your next task is to turn the code we had before into the following structure:</p>
+<pre><code>def is_leap_year(year):
+	YOUR CODE HERE
+	# return True if leap year
+	# return False if not a leap year
+
+def get_days_in_month(month,year):
+	YOUR CODE HERE
+	# return "__ days" as a string!
+
+month = input("Enter month: ")
+year = int(input("Enter year: "))
+
+print(get_days_in_month(month,year))
+</code></pre>
+</div>
+</body>
+
+</html>

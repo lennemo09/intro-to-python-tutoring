@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Week 2 - Content</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="python-intro---week-2-content">Python Intro - Week 2 Content</h1>
+<h2 id="strings-lists-boolean-selection-and-loops">Strings, lists, boolean, selection, and loops</h2>
+<h3 id="strings">1. Strings</h3>
+<h5 id="strings-in-python">Strings in Python</h5>
+<p>Strings are sequences of characters enclosed by quotes. In Python, there are some operators you can directly use with strings (which might not be available in other languages).</p>
+<p><strong>Example of strings and string operations</strong>:<br>
+<em>Notice that in Python, both ‘’ and “” can be used to denote a strings, although this is not the case for a lot of other programming languages where there’s a difference between a character and a string and ‘’ is reserved for characters and “” for strings.</em></p>
+<pre><code>this_is_a_string = "This is a string in double quotes"
+this_is_still_a_string = 'This is a string in single quotes'
+character = 'c'
+
+# String additions (or concatenation):
+print("hello" + "world")
+&gt; "helloworld"
+
+# String multiplication (or repetition):
+print(3*"hello")
+&gt; "hellohellohello"
+</code></pre>
+<p>To get the length of a string, use <code>len()</code>:</p>
+<pre><code>print(len("hello"))
+&gt; 5
+</code></pre>
+<p>To convert a variable to a string, use <code>str()</code>:</p>
+<pre><code>an_int = 3
+a_float = 3.1415
+
+print("This is not an int " + str(an_int))
+&gt; "This is not an int 3"
+
+print("This is not a float " + str(a_float))
+&gt; "This is not a float 3.1415"
+</code></pre>
+<h5 id="strings-methods">Strings methods:</h5>
+<p><code>str.capitalize()</code> : Returns a copy of the string with its first character capitalized and the rest lowercased.<br>
+<code>str.replace(old,new[,count])</code>: Returns a copy of the string with all occurences of substring <code>old</code> replaced by <code>new</code>. If the optional argument <code>count</code> is given, only the first <code>count</code> number of occurences are replaced.</p>
+<pre><code>text = ‘a piece of string’
+print(len(text))
+&gt; 17
+
+print(text.upper())
+&gt; ‘A PIECE OF STRING’
+
+print(text)
+&gt; ‘a piece of string’
+
+print(text.replace(‘tring’, ‘heet’))
+&gt; ‘a piece of sheet’
+
+print(text)
+‘a piece of string’
+
+diffText = 3*text.replace(‘a piece of’, ‘not another’)
+print(diffText)
+&gt; ‘not another stringnot another stringnot another string’
+
+print(diffText.count(‘not’))
+&gt; 6
+</code></pre>
+<h5 id="strings-slicing">Strings slicing:</h5>
+<p>Say we have a string <code>s = "HELLO"</code>, we can use <em>indexing (more information later)</em> to access certain parts of <code>s</code>:</p>
+
+<table>
+<thead>
+<tr>
+<th><code>s</code></th>
+<th><code>H</code></th>
+<th><code>E</code></th>
+<th><code>L</code></th>
+<th><code>L</code></th>
+<th><code>O</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>negative index</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table><pre><code>print(s[0])
+&gt; 'H'
+
+print(s[4])
+&gt; 'O'
+
+# Slicing: Use ':' while indexing. The end is exclusive!
+print(s[2:4])
+'LL'
+
+# Negative indexing
+very_long_string = "This is a very looooooooooong string!"
+print(very_long_string[-3:])
+&gt; 'ng!'
+</code></pre>
+<hr>
+<h3 id="lists-and-arrays">2. Lists (and arrays)</h3>
+<h5 id="list-and-indexing">List and indexing:</h5>
+<p>A <code>list</code> is a <em>data structure</em>, which is a <em>container</em> of multiple objects. Objects inside a <code>list</code> can be of any <code>type</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th><code>shopping_list</code></th>
+<th><code>"Milk"</code></th>
+<th><code>"Eggs"</code></th>
+<th><code>"Bread"</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>negative index</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table><p><strong>Example of a <code>list</code></strong>:</p>
+<pre><code>shopping_list = ["Milk","Eggs","Bread"]
+print(shopping_list)
+&gt; ["Milk","Eggs","Bread"]
+
+print(shopping_list[1])
+&gt; "Eggs"
+
+print(shopping_list[-2:-1])
+&gt; "Eggs"
+
+mixed_list = ["a string", 1, 3.14, ["a","different","list]]
+</code></pre>
+<h5 id="list-operations">List operations:</h5>
+<p>In Python, there are the following operations we can use on lists:</p>
+<ul>
+<li><code>len(a)</code>: Length of list <code>a</code></li>
+<li><code>a + b</code>: Concatenate list <code>a</code> and <code>b</code></li>
+<li><code>n*a</code>: Concatenate <code>n</code> copies of list <code>a</code> together</li>
+<li><code>a[k] = x</code> : Replace the item in <code>a</code> at position <code>k</code> with <code>x</code></li>
+<li><code>x in a</code>: <code>True</code> if <code>x</code> is an item of <code>a</code></li>
+<li><code>x not in a</code>: <code>True</code> if <code>x</code> is <strong>not</strong> an item of <code>a</code></li>
+</ul>
+<h5 id="list-methods">List methods:</h5>
+<p>In Python, there are the following built-in list methods:</p>
+<ul>
+<li><code>a.append(x)</code>: Append item <code>x</code> to the end of <code>a</code></li>
+<li><code>a.count(x)</code>: Returns the number of times item <code>x</code> is in <code>a</code></li>
+<li><code>a.index(x)</code>: Returns the index of the first occurence of <code>x</code> in <code>a</code></li>
+<li><code>a.insert(k,x)</code>: Insert item <code>x</code> at index <code>k</code> in list <code>a</code></li>
+<li><code>a.pop()</code>: Return the last item in list <code>a</code> and remove it from the list</li>
+<li><code>a.remove(x)</code>: Removes the first occurrence of <code>x</code> in <code>a</code></li>
+<li><code>a.reverse()</code>: Revertse all items in <code>a</code></li>
+</ul>
+<hr>
+<h3 id="booleans-and-selection-a.k.a.-conditionals">3. Booleans and selection (a.k.a. conditionals)</h3>
+<h5 id="boolean-data-type">Boolean data type:</h5>
+<p>A <code>boolean</code>, often referred to as <code>bool</code>, is either <code>True</code> or <code>False</code>. Used to represent the logical evaluation of an <em>expression</em>.<br>
+<strong>Example</strong>:</p>
+<pre><code>print(1 + 1 &lt; 10)
+&gt; True
+print("my name" == "your name")
+&gt; False
+
+a_bool = 3.14 &gt; 5
+print(a_bool)
+&gt; False
+</code></pre>
+<h5 id="boolean-operators">Boolean operators:</h5>
+<p>We can combine <em>expressions</em> using the following operators:</p>
+<ul>
+<li><code>not</code></li>
+<li><code>and</code></li>
+<li><code>or</code></li>
+</ul>
+<pre><code>value = 10
+print(1 &lt;= value and value &lt;= 100)
+&gt; True
+
+print(1 &lt;= value or value &lt;= 9)
+&gt; True
+</code></pre>
+<h5 id="comparison-operators">Comparison operators:</h5>
+<p>This is used to return a <code>bool</code> value for a comparison.</p>
+<ul>
+<li><code>&lt;</code> : Less than.</li>
+<li><code>&lt;=</code>: Less than or equal.</li>
+<li><code>&gt;</code>: Greater than.</li>
+<li><code>&gt;=</code>: Greater than or equal.</li>
+<li><code>==</code>: Equal <em>(why is it not just <code>=</code>?)</em>.  <strong>Not good for floats!</strong></li>
+<li><code>!=</code>: Not equal.  <strong>Also not good for floats!</strong></li>
+</ul>
+<p>Can we use these on strings? Yes!</p>
+<ul>
+<li><code>&lt;</code> : Less than.</li>
+<li><code>&lt;=</code>: Less than or equal.</li>
+<li><code>&gt;</code>: Greater than.</li>
+<li><code>&gt;=</code>: Greater than or equal.</li>
+<li><code>==</code>: Equal <em>(why is it not just <code>=</code>?)</em>.</li>
+<li><code>!=</code>: Not equal.</li>
+<li><code>x in s</code>: True if <code>x</code> is a <em>substring</em> of <code>s</code>. <em>(What is a substring?)</em></li>
+<li><code>x not in s</code>: True if <code>x</code> is <strong>not</strong> a <em>substring</em> of <code>s</code>.</li>
+</ul>
+<p>The characters in both strings are compared one by one. When different characters are found then their <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html">Unicode value</a> is compared. The character with lower Unicode value is considered to be smaller.</p>
+<pre><code>hero = "BATMAN"
+print(hero == "batman")
+&gt; False
+
+print(hero &lt; "Superman")
+&gt; True
+
+print("ATM" in hero)
+&gt; True
+</code></pre>
+<h5 id="selection">Selection:</h5>
+<p>Logic of an <code>if</code> statement:</p>
+<pre><code>if boolean_expression:
+	block
+after_block
+</code></pre>
+<pre class=" language-mermaid"><svg id="mermaid-svg-sK48BMKsMVSXHX5I" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="472" style="max-width: 176.515625px;" viewBox="0 0 176.515625 472"><style>#mermaid-svg-sK48BMKsMVSXHX5I{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-svg-sK48BMKsMVSXHX5I .error-icon{fill:#552222;}#mermaid-svg-sK48BMKsMVSXHX5I .error-text{fill:#552222;stroke:#552222;}#mermaid-svg-sK48BMKsMVSXHX5I .edge-thickness-normal{stroke-width:2px;}#mermaid-svg-sK48BMKsMVSXHX5I .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg-sK48BMKsMVSXHX5I .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg-sK48BMKsMVSXHX5I .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg-sK48BMKsMVSXHX5I .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg-sK48BMKsMVSXHX5I .marker{fill:#666;stroke:#666;}#mermaid-svg-sK48BMKsMVSXHX5I .marker.cross{stroke:#666;}#mermaid-svg-sK48BMKsMVSXHX5I svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg-sK48BMKsMVSXHX5I .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-svg-sK48BMKsMVSXHX5I .cluster-label text{fill:#333;}#mermaid-svg-sK48BMKsMVSXHX5I .cluster-label span{color:#333;}#mermaid-svg-sK48BMKsMVSXHX5I .label text,#mermaid-svg-sK48BMKsMVSXHX5I span{fill:#000000;color:#000000;}#mermaid-svg-sK48BMKsMVSXHX5I .node rect,#mermaid-svg-sK48BMKsMVSXHX5I .node circle,#mermaid-svg-sK48BMKsMVSXHX5I .node ellipse,#mermaid-svg-sK48BMKsMVSXHX5I .node polygon,#mermaid-svg-sK48BMKsMVSXHX5I .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-svg-sK48BMKsMVSXHX5I .node .label{text-align:center;}#mermaid-svg-sK48BMKsMVSXHX5I .node.clickable{cursor:pointer;}#mermaid-svg-sK48BMKsMVSXHX5I .arrowheadPath{fill:#333333;}#mermaid-svg-sK48BMKsMVSXHX5I .edgePath .path{stroke:#666;stroke-width:1.5px;}#mermaid-svg-sK48BMKsMVSXHX5I .flowchart-link{stroke:#666;fill:none;}#mermaid-svg-sK48BMKsMVSXHX5I .edgeLabel{background-color:white;text-align:center;}#mermaid-svg-sK48BMKsMVSXHX5I .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-svg-sK48BMKsMVSXHX5I .cluster rect{fill:hsl(210,66.6666666667%,95%);stroke:#26a;stroke-width:1px;}#mermaid-svg-sK48BMKsMVSXHX5I .cluster text{fill:#333;}#mermaid-svg-sK48BMKsMVSXHX5I .cluster span{color:#333;}#mermaid-svg-sK48BMKsMVSXHX5I div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160,0%,93.3333333333%);border:1px solid #26a;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg-sK48BMKsMVSXHX5I:root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mermaid-svg-sK48BMKsMVSXHX5I flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-0 LE-A" id="L-0-A" style="opacity: 1;"><path class="path" d="M88.2578125,54L88.2578125,79L88.2578125,104" marker-end="url(https://stackedit.io/app#arrowhead1430)" style="fill:none"></path><defs><marker id="arrowhead1430" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-B" id="L-A-B" style="opacity: 1;"><path class="path" d="M103.80667264344262,150L129.49609375,188L129.49609375,226" marker-end="url(https://stackedit.io/app#arrowhead1431)" style="fill:none"></path><defs><marker id="arrowhead1431" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-C" id="L-A-C" style="opacity: 1;"><path class="path" d="M72.70895235655738,150L47.01953125,188L47.01953125,249L47.01953125,297L68.497802734375,322" marker-end="url(https://stackedit.io/app#arrowhead1432)" style="fill:none"></path><defs><marker id="arrowhead1432" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-B LE-C" id="L-B-C" style="opacity: 1;"><path class="path" d="M129.49609375,272L129.49609375,297L108.017822265625,322" marker-end="url(https://stackedit.io/app#arrowhead1433)" style="fill:none"></path><defs><marker id="arrowhead1433" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-C LE-E" id="L-C-E" style="opacity: 1;"><path class="path" d="M88.2578125,368L88.2578125,393L88.2578125,418" marker-end="url(https://stackedit.io/app#arrowhead1434)" style="fill:none"></path><defs><marker id="arrowhead1434" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-0-A" class="edgeLabel L-LS-0' L-LE-A"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(129.49609375,188)" style="opacity: 1;"><g transform="translate(-15.609375,-13)" class="label"><rect rx="0" ry="0" width="31.21875" height="26"></rect><foreignObject width="31.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-B" class="edgeLabel L-LS-A' L-LE-B">True</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(47.01953125,249)" style="opacity: 1;"><g transform="translate(-18.3671875,-13)" class="label"><rect rx="0" ry="0" width="36.734375" height="26"></rect><foreignObject width="36.734375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-C" class="edgeLabel L-LS-A' L-LE-C">False</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-C" class="edgeLabel L-LS-B' L-LE-C"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-C-E" class="edgeLabel L-LS-C' L-LE-E"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-0-6150" transform="translate(88.2578125,31)" style="opacity: 1;"><rect rx="0" ry="0" x="-27.5078125" y="-23" width="55.015625" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-17.5078125,-13)"><foreignObject width="35.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Start</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-6151" transform="translate(88.2578125,127)" style="opacity: 1;"><rect rx="0" ry="0" x="-80.2578125" y="-23" width="160.515625" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-70.2578125,-13)"><foreignObject width="140.515625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">boolean_expression</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-6153" transform="translate(129.49609375,249)" style="opacity: 1;"><rect rx="0" ry="0" x="-29.109375" y="-23" width="58.21875" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-19.109375,-13)"><foreignObject width="38.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">block</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-6155" transform="translate(88.2578125,345)" style="opacity: 1;"><rect rx="0" ry="0" x="-51.109375" y="-23" width="102.21875" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.109375,-13)"><foreignObject width="82.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">after_block</div></foreignObject></g></g></g><g class="node default" id="flowchart-E-6159" transform="translate(88.2578125,441)" style="opacity: 1;"><rect rx="0" ry="0" x="-23.1171875" y="-23" width="46.234375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-13.1171875,-13)"><foreignObject width="26.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">End</div></foreignObject></g></g></g></g></g></g></svg></pre>
+<p><strong>Example:</strong></p>
+<pre><code>year = int(input(“Enter  year: ”))
+response = “ is not a leap year”
+if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) :
+	response = “ is a leap year”
+print(str(year) + response)
+</code></pre>
+<pre class=" language-mermaid"><svg id="mermaid-svg-FKcvKvpYw9ZFAQjV" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="472" style="max-width: 315.36328125px;" viewBox="0 0 315.36328125 472"><style>#mermaid-svg-FKcvKvpYw9ZFAQjV{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-svg-FKcvKvpYw9ZFAQjV .error-icon{fill:#552222;}#mermaid-svg-FKcvKvpYw9ZFAQjV .error-text{fill:#552222;stroke:#552222;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edge-thickness-normal{stroke-width:2px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg-FKcvKvpYw9ZFAQjV .marker{fill:#666;stroke:#666;}#mermaid-svg-FKcvKvpYw9ZFAQjV .marker.cross{stroke:#666;}#mermaid-svg-FKcvKvpYw9ZFAQjV svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-svg-FKcvKvpYw9ZFAQjV .cluster-label text{fill:#333;}#mermaid-svg-FKcvKvpYw9ZFAQjV .cluster-label span{color:#333;}#mermaid-svg-FKcvKvpYw9ZFAQjV .label text,#mermaid-svg-FKcvKvpYw9ZFAQjV span{fill:#000000;color:#000000;}#mermaid-svg-FKcvKvpYw9ZFAQjV .node rect,#mermaid-svg-FKcvKvpYw9ZFAQjV .node circle,#mermaid-svg-FKcvKvpYw9ZFAQjV .node ellipse,#mermaid-svg-FKcvKvpYw9ZFAQjV .node polygon,#mermaid-svg-FKcvKvpYw9ZFAQjV .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .node .label{text-align:center;}#mermaid-svg-FKcvKvpYw9ZFAQjV .node.clickable{cursor:pointer;}#mermaid-svg-FKcvKvpYw9ZFAQjV .arrowheadPath{fill:#333333;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edgePath .path{stroke:#666;stroke-width:1.5px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .flowchart-link{stroke:#666;fill:none;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edgeLabel{background-color:white;text-align:center;}#mermaid-svg-FKcvKvpYw9ZFAQjV .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-svg-FKcvKvpYw9ZFAQjV .cluster rect{fill:hsl(210,66.6666666667%,95%);stroke:#26a;stroke-width:1px;}#mermaid-svg-FKcvKvpYw9ZFAQjV .cluster text{fill:#333;}#mermaid-svg-FKcvKvpYw9ZFAQjV .cluster span{color:#333;}#mermaid-svg-FKcvKvpYw9ZFAQjV div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160,0%,93.3333333333%);border:1px solid #26a;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg-FKcvKvpYw9ZFAQjV:root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mermaid-svg-FKcvKvpYw9ZFAQjV flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-0 LE-1" id="L-0-1" style="opacity: 1;"><path class="path" d="M125.6171875,54L125.6171875,79L125.6171875,104" marker-end="url(https://stackedit.io/app#arrowhead1435)" style="fill:none"></path><defs><marker id="arrowhead1435" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-1 LE-A" id="L-1-A" style="opacity: 1;"><path class="path" d="M125.6171875,150L125.6171875,175L125.6171875,200" marker-end="url(https://stackedit.io/app#arrowhead1436)" style="fill:none"></path><defs><marker id="arrowhead1436" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-B" id="L-A-B" style="opacity: 1;"><path class="path" d="M155.16694415983608,246L203.98828125,284L203.98828125,322" marker-end="url(https://stackedit.io/app#arrowhead1437)" style="fill:none"></path><defs><marker id="arrowhead1437" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-C" id="L-A-C" style="opacity: 1;"><path class="path" d="M96.06743084016394,246L47.24609375,284L47.24609375,345L47.24609375,393L88.06437174479166,418" marker-end="url(https://stackedit.io/app#arrowhead1438)" style="fill:none"></path><defs><marker id="arrowhead1438" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-B LE-C" id="L-B-C" style="opacity: 1;"><path class="path" d="M203.98828125,368L203.98828125,393L163.17000325520834,418" marker-end="url(https://stackedit.io/app#arrowhead1439)" style="fill:none"></path><defs><marker id="arrowhead1439" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-0-1" class="edgeLabel L-LS-0' L-LE-1"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-1-A" class="edgeLabel L-LS-1' L-LE-A"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(203.98828125,284)" style="opacity: 1;"><g transform="translate(-15.609375,-13)" class="label"><rect rx="0" ry="0" width="31.21875" height="26"></rect><foreignObject width="31.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-B" class="edgeLabel L-LS-A' L-LE-B">True</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(47.24609375,345)" style="opacity: 1;"><g transform="translate(-18.3671875,-13)" class="label"><rect rx="0" ry="0" width="36.734375" height="26"></rect><foreignObject width="36.734375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-C" class="edgeLabel L-LS-A' L-LE-C">False</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-C" class="edgeLabel L-LS-B' L-LE-C"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-0-6170" transform="translate(125.6171875,31)" style="opacity: 1;"><rect rx="0" ry="0" x="-64.515625" y="-23" width="129.03125" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-54.515625,-13)"><foreignObject width="109.03125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">year = input ...</div></foreignObject></g></g></g><g class="node default" id="flowchart-1-6171" transform="translate(125.6171875,127)" style="opacity: 1;"><rect rx="0" ry="0" x="-117.6171875" y="-23" width="235.234375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-107.6171875,-13)"><foreignObject width="215.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">response = ' is not a leap year'</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-6173" transform="translate(125.6171875,223)" style="opacity: 1;"><rect rx="0" ry="0" x="-91.15625" y="-23" width="182.3125" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-81.15625,-13)"><foreignObject width="162.3125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">if year % 4 == 0 and ...</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-6175" transform="translate(203.98828125,345)" style="opacity: 1;"><rect rx="0" ry="0" x="-103.375" y="-23" width="206.75" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-93.375,-13)"><foreignObject width="186.75" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">response = ' is a leap year'</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-6177" transform="translate(125.6171875,441)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.6171875" y="-23" width="77.234375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.6171875,-13)"><foreignObject width="57.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">print ...</div></foreignObject></g></g></g></g></g></g></svg></pre>
+<p>Logic of an <code>if-else</code> statement:</p>
+<pre><code>if boolean_expression:
+	block1
+else:
+	block2
+after_block
+</code></pre>
+<pre class=" language-mermaid"><svg id="mermaid-svg-FbQN2ewchiATxmyI" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="376" style="max-width: 199.21875px;" viewBox="0 0 199.21875 376"><style>#mermaid-svg-FbQN2ewchiATxmyI{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-svg-FbQN2ewchiATxmyI .error-icon{fill:#552222;}#mermaid-svg-FbQN2ewchiATxmyI .error-text{fill:#552222;stroke:#552222;}#mermaid-svg-FbQN2ewchiATxmyI .edge-thickness-normal{stroke-width:2px;}#mermaid-svg-FbQN2ewchiATxmyI .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg-FbQN2ewchiATxmyI .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg-FbQN2ewchiATxmyI .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg-FbQN2ewchiATxmyI .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg-FbQN2ewchiATxmyI .marker{fill:#666;stroke:#666;}#mermaid-svg-FbQN2ewchiATxmyI .marker.cross{stroke:#666;}#mermaid-svg-FbQN2ewchiATxmyI svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg-FbQN2ewchiATxmyI .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-svg-FbQN2ewchiATxmyI .cluster-label text{fill:#333;}#mermaid-svg-FbQN2ewchiATxmyI .cluster-label span{color:#333;}#mermaid-svg-FbQN2ewchiATxmyI .label text,#mermaid-svg-FbQN2ewchiATxmyI span{fill:#000000;color:#000000;}#mermaid-svg-FbQN2ewchiATxmyI .node rect,#mermaid-svg-FbQN2ewchiATxmyI .node circle,#mermaid-svg-FbQN2ewchiATxmyI .node ellipse,#mermaid-svg-FbQN2ewchiATxmyI .node polygon,#mermaid-svg-FbQN2ewchiATxmyI .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-svg-FbQN2ewchiATxmyI .node .label{text-align:center;}#mermaid-svg-FbQN2ewchiATxmyI .node.clickable{cursor:pointer;}#mermaid-svg-FbQN2ewchiATxmyI .arrowheadPath{fill:#333333;}#mermaid-svg-FbQN2ewchiATxmyI .edgePath .path{stroke:#666;stroke-width:1.5px;}#mermaid-svg-FbQN2ewchiATxmyI .flowchart-link{stroke:#666;fill:none;}#mermaid-svg-FbQN2ewchiATxmyI .edgeLabel{background-color:white;text-align:center;}#mermaid-svg-FbQN2ewchiATxmyI .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-svg-FbQN2ewchiATxmyI .cluster rect{fill:hsl(210,66.6666666667%,95%);stroke:#26a;stroke-width:1px;}#mermaid-svg-FbQN2ewchiATxmyI .cluster text{fill:#333;}#mermaid-svg-FbQN2ewchiATxmyI .cluster span{color:#333;}#mermaid-svg-FbQN2ewchiATxmyI div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160,0%,93.3333333333%);border:1px solid #26a;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg-FbQN2ewchiATxmyI:root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mermaid-svg-FbQN2ewchiATxmyI flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-0 LE-A" id="L-0-A" style="opacity: 1;"><path class="path" d="M99.609375,54L99.609375,79L99.609375,104" marker-end="url(https://stackedit.io/app#arrowhead1440)" style="fill:none"></path><defs><marker id="arrowhead1440" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-B" id="L-A-B" style="opacity: 1;"><path class="path" d="M77.62564036885246,150L41.3046875,188L41.3046875,226" marker-end="url(https://stackedit.io/app#arrowhead1441)" style="fill:none"></path><defs><marker id="arrowhead1441" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-C" id="L-A-C" style="opacity: 1;"><path class="path" d="M121.59310963114754,150L157.9140625,188L157.9140625,226" marker-end="url(https://stackedit.io/app#arrowhead1442)" style="fill:none"></path><defs><marker id="arrowhead1442" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-B LE-E" id="L-B-E" style="opacity: 1;"><path class="path" d="M41.3046875,272L41.3046875,297L71.67171223958333,322" marker-end="url(https://stackedit.io/app#arrowhead1443)" style="fill:none"></path><defs><marker id="arrowhead1443" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-C LE-E" id="L-C-E" style="opacity: 1;"><path class="path" d="M157.9140625,272L157.9140625,297L127.54703776041667,322" marker-end="url(https://stackedit.io/app#arrowhead1444)" style="fill:none"></path><defs><marker id="arrowhead1444" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-0-A" class="edgeLabel L-LS-0' L-LE-A"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(41.3046875,188)" style="opacity: 1;"><g transform="translate(-15.609375,-13)" class="label"><rect rx="0" ry="0" width="31.21875" height="26"></rect><foreignObject width="31.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-B" class="edgeLabel L-LS-A' L-LE-B">True</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(157.9140625,188)" style="opacity: 1;"><g transform="translate(-18.3671875,-13)" class="label"><rect rx="0" ry="0" width="36.734375" height="26"></rect><foreignObject width="36.734375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-C" class="edgeLabel L-LS-A' L-LE-C">False</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-E" class="edgeLabel L-LS-B' L-LE-E"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-C-E" class="edgeLabel L-LS-C' L-LE-E"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-0-6190" transform="translate(99.609375,31)" style="opacity: 1;"><rect rx="0" ry="0" x="-27.5078125" y="-23" width="55.015625" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-17.5078125,-13)"><foreignObject width="35.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Start</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-6191" transform="translate(99.609375,127)" style="opacity: 1;"><rect rx="0" ry="0" x="-80.2578125" y="-23" width="160.515625" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-70.2578125,-13)"><foreignObject width="140.515625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">boolean_expression</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-6193" transform="translate(41.3046875,249)" style="opacity: 1;"><rect rx="0" ry="0" x="-33.3046875" y="-23" width="66.609375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-23.3046875,-13)"><foreignObject width="46.609375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">block1</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-6195" transform="translate(157.9140625,249)" style="opacity: 1;"><rect rx="0" ry="0" x="-33.3046875" y="-23" width="66.609375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-23.3046875,-13)"><foreignObject width="46.609375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">block2</div></foreignObject></g></g></g><g class="node default" id="flowchart-E-6197" transform="translate(99.609375,345)" style="opacity: 1;"><rect rx="0" ry="0" x="-51.109375" y="-23" width="102.21875" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.109375,-13)"><foreignObject width="82.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">after_block</div></foreignObject></g></g></g></g></g></g></svg></pre>
+<p><strong>Example:</strong></p>
+<pre><code>year = int(input(“Enter  year: ”))
+
+if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) :
+	response = str(year) + “ is a leap year”
+else:
+	response = str(year) + “ is not a leap year”
+	
+print(response)
+</code></pre>
+<pre class=" language-mermaid"><svg id="mermaid-svg-8ytAMDN3BnTPOjhV" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="376" style="max-width: 507.984375px;" viewBox="0 0 507.984375 376"><style>#mermaid-svg-8ytAMDN3BnTPOjhV{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-svg-8ytAMDN3BnTPOjhV .error-icon{fill:#552222;}#mermaid-svg-8ytAMDN3BnTPOjhV .error-text{fill:#552222;stroke:#552222;}#mermaid-svg-8ytAMDN3BnTPOjhV .edge-thickness-normal{stroke-width:2px;}#mermaid-svg-8ytAMDN3BnTPOjhV .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg-8ytAMDN3BnTPOjhV .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg-8ytAMDN3BnTPOjhV .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg-8ytAMDN3BnTPOjhV .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg-8ytAMDN3BnTPOjhV .marker{fill:#666;stroke:#666;}#mermaid-svg-8ytAMDN3BnTPOjhV .marker.cross{stroke:#666;}#mermaid-svg-8ytAMDN3BnTPOjhV svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg-8ytAMDN3BnTPOjhV .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-svg-8ytAMDN3BnTPOjhV .cluster-label text{fill:#333;}#mermaid-svg-8ytAMDN3BnTPOjhV .cluster-label span{color:#333;}#mermaid-svg-8ytAMDN3BnTPOjhV .label text,#mermaid-svg-8ytAMDN3BnTPOjhV span{fill:#000000;color:#000000;}#mermaid-svg-8ytAMDN3BnTPOjhV .node rect,#mermaid-svg-8ytAMDN3BnTPOjhV .node circle,#mermaid-svg-8ytAMDN3BnTPOjhV .node ellipse,#mermaid-svg-8ytAMDN3BnTPOjhV .node polygon,#mermaid-svg-8ytAMDN3BnTPOjhV .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-svg-8ytAMDN3BnTPOjhV .node .label{text-align:center;}#mermaid-svg-8ytAMDN3BnTPOjhV .node.clickable{cursor:pointer;}#mermaid-svg-8ytAMDN3BnTPOjhV .arrowheadPath{fill:#333333;}#mermaid-svg-8ytAMDN3BnTPOjhV .edgePath .path{stroke:#666;stroke-width:1.5px;}#mermaid-svg-8ytAMDN3BnTPOjhV .flowchart-link{stroke:#666;fill:none;}#mermaid-svg-8ytAMDN3BnTPOjhV .edgeLabel{background-color:white;text-align:center;}#mermaid-svg-8ytAMDN3BnTPOjhV .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-svg-8ytAMDN3BnTPOjhV .cluster rect{fill:hsl(210,66.6666666667%,95%);stroke:#26a;stroke-width:1px;}#mermaid-svg-8ytAMDN3BnTPOjhV .cluster text{fill:#333;}#mermaid-svg-8ytAMDN3BnTPOjhV .cluster span{color:#333;}#mermaid-svg-8ytAMDN3BnTPOjhV div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160,0%,93.3333333333%);border:1px solid #26a;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg-8ytAMDN3BnTPOjhV:root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mermaid-svg-8ytAMDN3BnTPOjhV flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-0 LE-A" id="L-0-A" style="opacity: 1;"><path class="path" d="M246.87109375,54L246.87109375,79L246.87109375,104" marker-end="url(https://stackedit.io/app#arrowhead1445)" style="fill:none"></path><defs><marker id="arrowhead1445" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-B" id="L-A-B" style="opacity: 1;"><path class="path" d="M195.78240266393442,150L111.375,188L111.375,226" marker-end="url(https://stackedit.io/app#arrowhead1446)" style="fill:none"></path><defs><marker id="arrowhead1446" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-A LE-C" id="L-A-C" style="opacity: 1;"><path class="path" d="M297.9597848360656,150L382.3671875,188L382.3671875,226" marker-end="url(https://stackedit.io/app#arrowhead1447)" style="fill:none"></path><defs><marker id="arrowhead1447" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-B LE-D" id="L-B-D" style="opacity: 1;"><path class="path" d="M111.375,272L111.375,297L208.25390625,331.3197163202353" marker-end="url(https://stackedit.io/app#arrowhead1448)" style="fill:none"></path><defs><marker id="arrowhead1448" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-C LE-D" id="L-C-D" style="opacity: 1;"><path class="path" d="M382.3671875,272L382.3671875,297L285.48828125,331.3197163202353" marker-end="url(https://stackedit.io/app#arrowhead1449)" style="fill:none"></path><defs><marker id="arrowhead1449" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-0-A" class="edgeLabel L-LS-0' L-LE-A"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(111.375,188)" style="opacity: 1;"><g transform="translate(-15.609375,-13)" class="label"><rect rx="0" ry="0" width="31.21875" height="26"></rect><foreignObject width="31.21875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-B" class="edgeLabel L-LS-A' L-LE-B">True</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(382.3671875,188)" style="opacity: 1;"><g transform="translate(-18.3671875,-13)" class="label"><rect rx="0" ry="0" width="36.734375" height="26"></rect><foreignObject width="36.734375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-C" class="edgeLabel L-LS-A' L-LE-C">False</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-D" class="edgeLabel L-LS-B' L-LE-D"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-C-D" class="edgeLabel L-LS-C' L-LE-D"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-0-6210" transform="translate(246.87109375,31)" style="opacity: 1;"><rect rx="0" ry="0" x="-64.515625" y="-23" width="129.03125" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-54.515625,-13)"><foreignObject width="109.03125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">year = input ...</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-6211" transform="translate(246.87109375,127)" style="opacity: 1;"><rect rx="0" ry="0" x="-91.15625" y="-23" width="182.3125" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-81.15625,-13)"><foreignObject width="162.3125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">if year % 4 == 0 and ...</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-6213" transform="translate(111.375,249)" style="opacity: 1;"><rect rx="0" ry="0" x="-103.375" y="-23" width="206.75" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-93.375,-13)"><foreignObject width="186.75" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">response = ' is a leap year'</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-6215" transform="translate(382.3671875,249)" style="opacity: 1;"><rect rx="0" ry="0" x="-117.6171875" y="-23" width="235.234375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-107.6171875,-13)"><foreignObject width="215.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">response = ' is not a leap year'</div></foreignObject></g></g></g><g class="node default" id="flowchart-D-6217" transform="translate(246.87109375,345)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.6171875" y="-23" width="77.234375" height="46" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.6171875,-13)"><foreignObject width="57.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">print ...</div></foreignObject></g></g></g></g></g></g></svg></pre>
+<p>We can make multiple selection using <code>if-elif-else</code> statement:</p>
+<pre><code>if boolean_expression1:
+	block 1
+elif boolean_expression2:
+	block2
+elif boolean_expression3:
+	block3
+elif boolean_expression4:
+	block4
+else:
+	last_block
+</code></pre>
+<p>To make more complicated selections, we can also use <strong>nested</strong> conditionals!</p>
+<pre><code>if boolean_expression1:
+	if boolean_expression2:
+		block2
+	elif boolean_expression3:
+		if boolean_expression4:
+			block4
+		else:
+			block3
+	else:
+		block1
+else:
+	last_block
+</code></pre>
+<hr>
+<h3 id="loops">4. Loops</h3>
+<p>A loop can be used to run a block of code multiple times. This is often helpful when we want to achieve a repetitive task without having to manually write down the same code multiple times as it is inefficient and often non-scalable when the data set grows larger.<br>
+There are 2 types of loops in Python:</p>
+<ul>
+<li><code>while</code> loop: The <code>while</code> loop depends on a Boolean expression to determine whether or not to continue the loop procedure.</li>
+<li><code>for</code> loop: The <code>for</code> loop goes through each and every single item of a collection in order from first to last.</li>
+</ul>
+<h5 id="for-loops"><code>for</code> loops:</h5>
+<p>A <code>for</code> loop can be used for the following purposes:</p>
+<ul>
+<li><strong>for</strong> each number <strong>in</strong> a sequence of numbers</li>
+<li><strong>for</strong> each item <strong>in</strong> a list</li>
+<li><strong>for</strong> each character <strong>in</strong> a string</li>
+<li><strong>for</strong> each line <strong>in</strong> a file</li>
+<li><strong>for</strong> variable_name <strong>in</strong> container_name</li>
+</ul>
+<p>A <code>for</code> is usually used with a <a href="https://docs.python.org/3/library/stdtypes.html#range">range()</a> object.<br>
+By using <code>range(stop)</code>, it essentially does the following:</p>
+<ul>
+<li>Iterates over integers from 0 to <code>stop-1</code>, that is, integers in <code>[0,stop)</code></li>
+<li>Begins at 0</li>
+<li>Stops when it gets to stop</li>
+</ul>
+<p>By using <code>range(stop)</code>, it essentially does the following:</p>
+<ul>
+<li>Starts with the integer <code>start</code></li>
+<li>stops when it gets to <code>stop</code></li>
+<li>If <code>step</code> is not given, defaults to <code>step=1</code></li>
+</ul>
+<pre><code>range(stop)	# A container of numbers from from 0 to stop-1
+range(start,stop[,step]) # A container of numbers from from start to stop-1 every step
+
+range(6)
+&gt; [0,1,2,3,4,5]
+
+range(2,7)
+&gt; [2,3,4,5,6]
+
+range(0,10,2)
+&gt; [0,2,4,6,8]
+</code></pre>
+<p>Example of <code>for</code> loops:</p>
+<pre><code>list_of_people_names = ["Alice","Bob","Charlie"]
+list_of_people_ages = [22,23,19]
+
+# Note: You can use len(list_of_people_ages) as well.
+# Because they are both the same length, which is 3.
+for i in range(len(list_of_people_names)): # This means range(3). Which is [0,1,2].
+	# The for loop will automatically assigns i = 0, i = 1, i = 2, at every step.
+	current_name = list_of_people_names[i]
+	current_age = list_of_people_ages[i]
+	print(current_name,"is",current_age,"years old.")
+</code></pre>
+<pre><code>&gt;&gt; ###### RUN PROGRAM ######
+&gt;&gt; Alice is 22 years old.
+&gt;&gt; Bob is 23 years old.
+&gt;&gt; Charlie is 19 years old.
+&gt;&gt; ###### END PROGRAM ######
+</code></pre>
+<h5 id="while-loops"><code>while</code> loops:</h5>
+<p>Example of <code>while</code> loops:</p>
+<pre><code>counted = 0
+count_limit = 10	# Count upto 10 numbers, including 0 so that's 0 to 9.
+
+while counted &lt; count_limit:
+	print("I have counted", counted, "numbers.")
+	counted = counted + 1 # New counted value equals old counted value plus 1.
+print("I have finished counting",count_limit,"numbers.")
+</code></pre>
+<p>^ <strong>Note</strong>: There is a TAB indentation here to signify the code block that is INSIDE the loop and not OUTSIDE.</p>
+<pre><code>&gt;&gt; ###### RUN PROGRAM ######
+&gt;&gt; I have counted 0 numbers.
+&gt;&gt; I have counted 1 numbers.
+&gt;&gt; I have counted 2 numbers.
+&gt;&gt; I have counted 3 numbers.
+&gt;&gt; I have counted 4 numbers.
+&gt;&gt; I have counted 5 numbers.
+&gt;&gt; I have counted 6 numbers.
+&gt;&gt; I have counted 7 numbers.
+&gt;&gt; I have counted 8 numbers.
+&gt;&gt; I have counted 9 numbers.
+&gt;&gt; I have finished counting 10 numbers.
+&gt;&gt; ###### END PROGRAM ######
+</code></pre>
+<p>Because <code>while</code> will keep executing if the given <em>boolean expression</em> is <code>True</code>, we can use this to create a semi-infinite running program, which will only stops if the user types “quit”:</p>
+<pre><code>running = True
+while running:
+	option = input("Enter your command:")
+	if option == "quit":
+		running = False # Next step the while loop will no longer run
+	else:
+		pass # Do nothing
+</code></pre>
+</div>
+</body>
+
+</html>
